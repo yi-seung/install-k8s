@@ -10,7 +10,8 @@ if [ -f  /etc/yum.repos.d/kubernetes.repo ]; then
 fi
 sudo cp ./kubernetes.repo /etc/yum.repos.d/
 echo "####################################################################################################"
-yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+sudo yum update -y
+sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 echo "##### KUBERNETES 설치 #####"
 sudo systemctl enable kubelet && sudo systemctl start kubelet; sudo systemctl status kubelet
 cat <<EOF >  ./k8s.conf
